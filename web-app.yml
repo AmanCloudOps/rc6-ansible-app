@@ -1,0 +1,13 @@
+- name: Deploy Webpage to Nginx
+  become: yes
+  hosts: server
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+    
+    - name: Copy webpage to server destination
+      copy:
+        src: index.html
+        dest: /var/www/html
